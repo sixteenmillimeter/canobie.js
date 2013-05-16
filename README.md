@@ -5,7 +5,7 @@
                        Render with the canvas. 
           Accessability and abstraction before performance.
         
-                         Have fun with it. 
+                         Just for fun! 
 
 
 
