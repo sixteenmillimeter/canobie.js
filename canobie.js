@@ -1,5 +1,5 @@
 /******************************************************************************
- *							can.js
+ *							canobie.js
  *
  * Manipulate images as arrays of pixel data. Render with the canvas. 
  *         Accessability and abstraction before performance.
@@ -20,6 +20,7 @@ can.state = {};
 //-----------------------------------------------------------------------------
 //							CORE
 //-----------------------------------------------------------------------------
+
 /******************************************************************************
  * can.get
  * Retrieves image data from an element. Can be video or img. 
@@ -41,13 +42,12 @@ can.get = function (id, type) {
 		w = img.width,
 		h = img.height,
 		canvas = document.createElement('canvas');
-		console.dir(img);
+
 	//Temporary jQuery for Video
 	if (img.tagName.toLowerCase() === 'video') {
 		w = $('#' + id).width();
 		h = $('#' + id).height();
 	}
-	console.log(w + ', ' + h);
 	canvas.width = w;
 	canvas.height = h;
 
@@ -167,6 +167,7 @@ can.newCanvas = function (container, id, data, w, h) {
 	if (w !== undefined) { style += 'height:' + h + 'px;';}
 	str = '<canvas id="' + id +'" syle="' + style +'"></canvas>';
 	container.append(str);
+	if (data) { can.set(id, data); }
 };
 can.newI = function (container, id, w, h) {};
 can.newV = function (container, id, w, h) {};
@@ -231,12 +232,6 @@ can.all = function (data, act, complete, x, y, w, h) {
 	if (complete !== undefined) { complete(); }
 };
 
-//
-//
-//
-//
-
-
 /******************************************************************************
  * can.localFile
  * Takes local image or video and attaches it to the tag id'd in the function
@@ -262,10 +257,11 @@ can.localFile = function (input, id, callback) {
 	}
 };
 
-//
-//
-//
-//
+/******************************************************************************
+ * can.hist
+ * Generates histogram of data
+ *
+*******************************************************************************/
 
 can.hist = function (data) {
 	'use strict';
@@ -287,6 +283,12 @@ can.hist = function (data) {
 	can.all(data, getAvg, success);
 };
 
+/******************************************************************************
+ * can.histDisplay
+ * Display histogram as an element
+ *
+*******************************************************************************/
+
 can.histDisplay = function (id, hist, w, h) {
 	'use strict';
 	if (w === undefined || w === null) { w = 255; }
@@ -306,8 +308,13 @@ can.histDisplay = function (id, hist, w, h) {
 	for (var i = 0; i < correct.length; i++) {
 		$('#' + id).append('<span style="background: #000; width: ' + Math.round(w / 255) +'px; height: ' +  + '"></span>');
 	}
-	
 };
+
+/******************************************************************************
+ * can.avgColor
+ * Get the average color of an array of data
+ *
+*******************************************************************************/
 
 can.avgColor = function (data, callback) {
 	'use strict';
@@ -552,6 +559,10 @@ can.add = function (A, B) {
 can.toImg = function () {
 
 };
+
+//-----------------------------------------------------------------------------
+//							VIDEO CORE
+//-----------------------------------------------------------------------------
 
 can.video = {};
 
