@@ -90,7 +90,7 @@ can.get = function (id, type) {
 			} else if (type === 'flat') {
 				dataArr[y][x] = typeFlat(data[i], data[i+1], data[i+2], data[i+3]);
 			} else if (type === 'flatrgb') {
-				dataArr[y][x] = typeRgb(data[i], data[i+1], data[i+2]);
+				dataArr[y][x] = typeFlatRgb(data[i], data[i+1], data[i+2]);
 			}
 		}
 	}
