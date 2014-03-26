@@ -556,8 +556,16 @@ can.add = function (A, B) {
 	};
 };
 
-can.toImg = function () {
-
+can.toImg = function (data, type) {
+	'use strict';
+	//png only right now
+	var canvas = document.createElement('canvas');
+	var h = data.length,
+		w = data[0].length;
+	canvas.width = w;
+	canvas.height = h;
+	can.set(canvas, data);
+	window.location = canvas.toDataURL("image/png");
 };
 
 //-----------------------------------------------------------------------------
