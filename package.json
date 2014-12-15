@@ -1,0 +1,21 @@
+{
+  "name": "canobie",
+  "version": "0.2.0",
+  "description": "Manipulate images as arrays of pixel data",
+  "main": "canobie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sixteenmillimeter/canobie.js.git"
+  },
+  "keywords": [
+    "canvas",
+    "image",
+    "manipulation",
+    "analysis"
+  ],
+  "author": "Sixteenmillimeter",
+  "license": "BSD"
+}
